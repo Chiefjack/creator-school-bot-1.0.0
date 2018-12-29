@@ -7,6 +7,7 @@ import asyncio
 import random
 import datetime
 from datetime import timedelta
+import os
 
 bot = commands.Bot(command_prefix="cs!")
 bot.remove_command("help")
