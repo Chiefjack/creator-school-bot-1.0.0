@@ -253,6 +253,12 @@ async def accept(ctx, user: discord.Member):
 	await bot.send_message(ctx.message.author, reminder)
 	message_to_new_teacher = (f"Congratulations on becoming a {teacher_type} Teacher! Please only post lessons in your class channel, no other messages. Also, once you have taught, please post in #teacher-log the date you have taught, and the class you taught in. Thank you, and well done once again!")
 	await bot.send_message(user, message_to_new_teacher)
+	
+	applicant_stage2_role = get(ctx.message.server.roles, id="527966801158602793")
+	await bot.remove_roles(user, applicant_stage2_role)
+	
+	await bot.say(f"{user.mention} was accepted. Please ignore their request.")
+	
 	await bot.delete_message(ctx.message)
 
 #DECLINING TEACHERS
@@ -330,6 +336,11 @@ async def decline(ctx, user: discord.Member):
 		applicant_role = get(ctx.message.server.roles, id="528267909181734928")
 		await bot.remove_roles(user, applicant_role)
 
+	applicant_stage2_role = get(ctx.message.server.roles, id="527966801158602793")
+	await bot.remove_roles(user, applicant_stage2_role)
+	
+	await bot.say(f"{user.mention} was declined. Please ignore their request.")
+	
 	await bot.delete_message(ctx.message)
 
 #SUGGEST COMMAND
