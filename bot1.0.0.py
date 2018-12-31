@@ -420,6 +420,7 @@ async def help(ctx):
 													 "**cs!support** - Have a question or query about the server or bot? Just ask after cs!support\n"
 													 "**cs!suggest** - Have a suggestion for the server or bot? Just tell us after cs!suggest\n"
 													 "**cs!ping** - Checks and returns the bots ping\n"
+													 "**cs!format** - Displays the teacher application format\n"
 													 "---")
 	embed.add_field(name="**STAFF COMMANDS**", value= "**cs!supportresponse** - Responds to support requests. See pinned message in #support-log\n"
 													"**cs![class name] [yes/no]** - Toggles whether we are accepting certain teachers. See #bot-support for more details\n"
@@ -437,5 +438,40 @@ async def ping(ctx):
 	difference = message1.timestamp - ctx.message.timestamp
 	await bot.edit_message(message1, f":ping_pong: Pong! That took {1000*difference.total_seconds():.1f}ms.")
 
+@bot.command(pass_context=True)
+async def format(ctx):
+	if ctx.message.channel.id == "528215464136933387":
+		channel = True
+	elif ctx.message.channel.id == "528265872008019969":
+		channel = True
+	elif ctx.message.channel.id == "528266014358503466":
+		channel = True
+	elif ctx.message.channel.id == "528266063503294484":
+		channel = True
+	elif ctx.message.channel.id == "528266105702318101":
+		channel = True
+	elif ctx.message.channel.id == "528266173280681994":
+		channel = True
+	elif ctx.message.channel.id == "528266221729349642":
+		channel = True
+	elif ctx.message.channel.id == "528266267266646036":
+		channel = True
+	elif ctx.message.channel.id == "528266333654351882":
+		channel = True
+	elif ctx.message.channel.id == "528266397340663808":
+		channel = True
+	elif ctx.message.channel.id == "528266444182388765":
+		channel = True
+	elif ctx.message.channel.id == "528266496711852035":
+		channel = True
+	else:
+		await bot.say("You can only use this command in a teacher application channel.")
+	
+	if channel == True:
+		await bot.say("**This is the format for requesting a teacher role:**\n\n"
+					  "Requesting Teacher: *[teacher type you're requesting]*\n"
+					  "Skills: *[skills in this subject]*\n"
+					  "Weaknesses: *[weaknesses in this subject]*\n"
+					  "Works: *[at least 2 photos or videos showcasing your work, if you are requesting gameplay you can leave a level ID if it is under 7 stars]*")
 
 bot.run(os.environ["TOKEN"])
